@@ -1,17 +1,20 @@
 import express, { response } from "express";
+import cors from 'cors'
 
 const app = express();
 const PORT = process.env.PORT || 3002;
 
+app.use(cors());
+
 let todos = [];
 
-app.use(express.json()); 
+app.use(express.json());
 
 app.post("/todo", (request, response) => {
   todos.push(request.body.text);
   response.send({
     message: "your data is saved",
-    data: todos
+    data: todos,
   });
 });
 
@@ -21,16 +24,6 @@ app.get("/todos", (request, response) => {
     data: todos,
   });
 });
-
-
-
-
-
-
-
-
-
-
 
 // app.get("/sd", (request, response) => {
 //   response.send("testing / routes");
