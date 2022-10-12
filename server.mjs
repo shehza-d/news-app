@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 
@@ -8,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.use(cors());
+app.use(express.json());
 
 let todoSchema = new mongoose.Schema({
   text: { type: String, require: true },
@@ -16,16 +17,15 @@ let todoSchema = new mongoose.Schema({
 });
 const todoModel = mongoose.model("todos", todoSchema);
 
-app.use(express.json());
+
 
 app.post("/todo", (request, response) => {
-  // todos.push(request.body.text);
 
   todoModel.create({ text: request.body.text }, (err, saved) => {
     if (!err) {
-      console.log("saved")
+      console.log("saved");
       response.send({
-        message: "your data is saved"
+        message: "your data is saved",
       });
     } else {
       response.status(500).send({
@@ -35,9 +35,18 @@ app.post("/todo", (request, response) => {
   });
 });
 
-app.get("/todos", (request, response) => {
-  response.send({
-    message: "here is your todo list",
+app.get("/todos", (req, res) => {
+  todoModel.find({}, (err, data) => {
+    if (!err) {
+      res.send({
+        message: "here is you todo list",
+        data: data,
+      });
+    } else {
+      res.status(500).send({
+        message: "server error",
+      });
+    }
   });
 });
 
