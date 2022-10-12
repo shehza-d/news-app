@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3002;
 
 app.use(cors());
 
-let todos = [];
+
 
 app.use(express.json());
 
