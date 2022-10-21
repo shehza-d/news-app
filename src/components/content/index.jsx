@@ -8,7 +8,7 @@ const Content = () => {
     //get news API function
     const getTrendingNews = () => {
       const options = {
-        method: "GET",
+        method: "GET",    
         headers: {
           // "X-Search-Location": "ijij",
           "X-BingApis-SDK": "true",
@@ -19,7 +19,7 @@ const Content = () => {
       };
 
       fetch(
-        "https://bing-news-search1.p.rapidapi.com/news/trendingtopics?textFormat=Raw&safeSearch=Off",
+        "https://bing-news-search1.p.rapidapi.com/news/",
         options
       )
         .then((response) => response.json())
@@ -58,8 +58,9 @@ const Content = () => {
 
   return (
     <div className="App">
-      testing github action with firebase
-      <form onSubmit={getNews}>
+      <form
+      //  onSubmit={getNews}
+       >
         <input
           type="text"
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -70,7 +71,7 @@ const Content = () => {
       {data.map((eachNews) => (
         <div className="post" key={eachNews?.name}>
           <a
-            className="link"
+            className="link"                            
             href={eachNews?.url}
             target="_blank"
             rel="noreferrer"
