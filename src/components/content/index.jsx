@@ -1,39 +1,96 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Content = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  // const [searchTerm, setSearchTerm] = useState();
+  const [data, setData] = useState([]);
 
-  const options = {
-    method: "GET",
-    headers: {
-      "X-BingApis-SDK": "true",
-      "X-RapidAPI-Key": "773a0cc313msh295d7502f6b02fbp187c0fjsnab04c4750f31",
-      "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
-    },
-  };
+  useEffect(() => {
+    //get news API function
+    const getTrendingNews = () => {
+      const options = {
+        method: "GET",
+        headers: {
+          // "X-Search-Location": "ijij",
+          "X-BingApis-SDK": "true",
+          "X-RapidAPI-Key":
+            "773a0cc313msh295d7502f6b02fbp187c0fjsnab04c4750f31",
+          "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
+        },
+      };
 
-  fetch(
-    "https://bing-news-search1.p.rapidapi.com/news/search?q=%3CREQUIRED%3E&freshness=Day&textFormat=Raw&safeSearch=Off",
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
-
-    const getNews = (e) => {
-      e.preventDefault();
+      fetch(
+        "https://bing-news-search1.p.rapidapi.com/news/trendingtopics?textFormat=Raw&safeSearch=Off",
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          setData(response.value);
+        })
+        .catch((err) => console.error(err));
     };
+    getTrendingNews();
+  }, []);
+
+  const getNews = (e) => {
+    e.preventDefault();
+    //get news API function from search querry
+    const options = {
+      method: "GET",
+      headers: {
+        "X-BingApis-SDK": "true",
+        "X-RapidAPI-Key": "773a0cc313msh295d7502f6b02fbp187c0fjsnab04c4750f31",
+        "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
+      },
+    };
+
+    fetch(
+      `https://bing-news-search1.p.rapidapi.com/news/search?q=${searchTerm}&freshness=Day&textFormat=Raw&safeSearch=Off`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setData(response.value);
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="App">
       testing github action with firebase
-      
-      <form>
-        <input type="text" onChange={(e) => setSearchTerm(e.target.value)} />
+      <form onSubmit={getNews}>
+        <input
+          type="text"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search News topic"
+        />
         <button type="submit">get</button>
-        {searchTerm}
       </form>
+      {data.map((eachNews) => (
+        <div className="post" key={eachNews?.name}>
+          <a
+            className="link"
+            href={eachNews?.url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {eachNews?.name}
+          </a>
+
+          <span>{eachNews?.datePublished}</span>
+
+          <h3>{eachNews?.description}</h3>
+
+          <img
+            src={eachNews?.image?.thumbnail?.contentUrl
+              .replace("&pid=News", "")
+              .replace("pid=News&", "")
+              .replace("pid=News", "")}
+            alt=""
+          />
+        </div>
+      ))}
     </div>
   );
 };
