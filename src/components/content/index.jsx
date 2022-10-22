@@ -1,3 +1,4 @@
+import "./index.css";
 import { useEffect, useState } from "react";
 
 const Content = () => {
@@ -8,7 +9,7 @@ const Content = () => {
     //get news API function
     const getTrendingNews = () => {
       const options = {
-        method: "GET",    
+        method: "GET",
         headers: {
           // "X-Search-Location": "ijij",
           "X-BingApis-SDK": "true",
@@ -18,10 +19,7 @@ const Content = () => {
         },
       };
 
-      fetch(
-        "https://bing-news-search1.p.rapidapi.com/news/",
-        options
-      )
+      fetch("https://bing-news-search1.p.rapidapi.com/news/", options)
         .then((response) => response.json())
         .then((response) => {
           console.log(response);
@@ -34,7 +32,7 @@ const Content = () => {
 
   const getNews = (e) => {
     e.preventDefault();
-    //get news API function from search querry
+    //get news API function from search query
     const options = {
       method: "GET",
       headers: {
@@ -57,42 +55,52 @@ const Content = () => {
   };
 
   return (
-    <div className="App">
-      <form
-      //  onSubmit={getNews}
-       >
+    <>
+      <form className="inputForm" onSubmit={getNews}>
         <input
           type="text"
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search News topic"
         />
-        <button type="submit">get</button>
+        <button type="submit">GO</button>
       </form>
-      {data.map((eachNews) => (
-        <div className="post" key={eachNews?.name}>
-          <a
-            className="link"                            
-            href={eachNews?.url}
-            target="_blank"
-            rel="noreferrer"
+      <div className="ContentSection">
+        {/* <div className="allNewsPost"> */}
+
+        {data.map((eachNews) => (
+          <div
+            className="post"
+            style={{
+              backgroundImage: `url(${eachNews?.image?.thumbnail?.contentUrl
+                .replace("&pid=News", "")
+                .replace("pid=News&", "")
+                .replace("pid=News", "")}`,
+            }}
+            key={eachNews?.name}
           >
-            {eachNews?.name}
-          </a>
+            <a
+              className="link"
+              href={eachNews?.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {eachNews?.name}
+            </a>
 
-          <span>{eachNews?.datePublished}</span>
+            <span>{eachNews?.datePublished}</span>
 
-          <h3>{eachNews?.description}</h3>
-
-          <img
+            {/* <img
             src={eachNews?.image?.thumbnail?.contentUrl
               .replace("&pid=News", "")
               .replace("pid=News&", "")
               .replace("pid=News", "")}
             alt=""
-          />
-        </div>
-      ))}
-    </div>
+          /> */}
+            <h3>{eachNews?.description}</h3>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
