@@ -19,7 +19,7 @@ const Header = () => {
           <li>Home</li>
           <li>About</li>
         </ul>
-        <div class="dateDiv">
+        <div className="dateDiv">
           <div id="date">{moment().format("D MMM YYYY")}</div>
           <div id="time">{moment().format("h:mm:s a")}</div>
         </div>

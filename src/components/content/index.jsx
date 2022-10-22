@@ -54,6 +54,14 @@ const Content = () => {
       .catch((err) => console.error(err));
   };
 
+  const dateFunction = (postDate) => {
+    const formatter = new Intl.RelativeTimeFormat("en");
+    const diff = new Date() - new Date(postDate);
+    const d = formatter.format(Math.round(-diff / (1000 * 60 * 60)), "hour");
+    // console.log(typeof(d));
+    return d;
+  };
+
   return (
     <>
       <form className="inputForm" onSubmit={getNews}>
@@ -64,40 +72,41 @@ const Content = () => {
         />
         <button type="submit">GO</button>
       </form>
-      <div className="contentSection">
-        {/* <div className="allNewsPost"> */}
 
+      <div className="contentSection">
         {data.map((eachNews) => (
-          <div
-            className="post"
-            style={{
-              backgroundImage: `url(${eachNews?.image?.thumbnail?.contentUrl
-                .replace("&pid=News", "")
-                .replace("pid=News&", "")
-                .replace("pid=News", "")}`,
-            }}
+          <a
+            className="link"
+            href={eachNews?.url}
+            target="_blank"
+            rel="noreferrer"
             key={eachNews?.name}
           >
-            <a
-              className="link"
-              href={eachNews?.url}
-              target="_blank"
-              rel="noreferrer"
+            <div
+              className="post"
+              style={{
+                backgroundImage: `url(${eachNews?.image?.thumbnail?.contentUrl
+                  .replace("&pid=News", "")
+                  .replace("pid=News&", "")
+                  .replace("pid=News", "")}`,
+              }}
             >
-              {eachNews?.name}
-            </a>
+              <h1>{eachNews?.name}</h1>
+              <br />
+              <span>{dateFunction(eachNews?.datePublished)}</span>
+              <br />
+              <br />
+              <h3>{eachNews?.description}</h3>
 
-            <span>{eachNews?.datePublished}</span>
-
-            {/* <img
+              {/* <img
             src={eachNews?.image?.thumbnail?.contentUrl
               .replace("&pid=News", "")
               .replace("pid=News&", "")
               .replace("pid=News", "")}
             alt=""
           /> */}
-            <h3>{eachNews?.description}</h3>
-          </div>
+            </div>
+          </a>
         ))}
       </div>
     </>
