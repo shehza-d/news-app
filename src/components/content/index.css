@@ -1,28 +1,36 @@
-.ContentSection{
-	scroll-snap-type: x mandatory;
+.body,
+html {
+	scroll-snap-type: y mandatory;
+}
+
+.contentSection {
 	/* overflow: scroll; */
 	/* white-space: nowrap; */
 	/* overflow-x: hidden; */
-	overflow-y: scroll;
+	/* overflow-y: scroll; */
 	/* white-space: nowrap; */
 }
-.inputForm{
+
+.inputForm {
 	margin-top: 25px;
 	margin-bottom: 25px;
 	display: flex;
 	justify-content: center;
 }
-.inputForm>input{
+
+.inputForm>input {
 	padding: 15px;
 	width: 250px;
 	border-radius: 50px;
 }
-.inputForm>button{
+
+.inputForm>button {
 	padding: 5px;
 	width: 50px;
 	border-radius: 50px;
 	/* border: none; */
 }
+
 /* .placeholder {
 	color: #65657b;
 	left: 20px;
@@ -44,19 +52,17 @@
 	color: var(--main-color);
 } */
 
-.post{
+.post {
 	margin: 30px;
 	width: 800px;
-	height: 500px;
+	/* height: 500px; */
 	border-radius: 50px;
 	border: 2px solid red;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	scroll-snap-align: start;
-	
+	height: 80vh;
+	width: 80vw;
+	scroll-snap-align: start;
 }
-
-
-
-

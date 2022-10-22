@@ -64,7 +64,7 @@ const Content = () => {
         />
         <button type="submit">GO</button>
       </form>
-      <div className="ContentSection">
+      <div className="contentSection">
         {/* <div className="allNewsPost"> */}
 
         {data.map((eachNews) => (
