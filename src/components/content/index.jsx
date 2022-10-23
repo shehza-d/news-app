@@ -1,13 +1,15 @@
 import "./index.css";
 import { useEffect, useState } from "react";
-
+import loadingGif from '../../Assets/loading.gif'
 const Content = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
+const [loading,setLoading]=useState(false);
 
   useEffect(() => {
     //get news API function
     const getTrendingNews = () => {
+      setLoading(true)
       const options = {
         method: "GET",
         headers: {
@@ -22,10 +24,14 @@ const Content = () => {
       fetch("https://bing-news-search1.p.rapidapi.com/news/", options)
         .then((response) => response.json())
         .then((response) => {
+          setLoading(false)
           console.log(response);
           setData(response.value);
         })
-        .catch((err) => console.error(err));
+        .catch((err) =>{
+           console.error(err)
+           setLoading(false)
+          });
     };
     getTrendingNews();
   }, []);
@@ -33,6 +39,8 @@ const Content = () => {
   const getNews = (e) => {
     e.preventDefault();
     //get news API function from search query
+    setLoading(true)
+    setData([])
     const options = {
       method: "GET",
       headers: {
@@ -48,10 +56,15 @@ const Content = () => {
     )
       .then((response) => response.json())
       .then((response) => {
+        setLoading(false)
         console.log(response);
         setData(response.value);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setLoading(false)
+        
+        console.error(err)
+      });
   };
 
   const dateFunction = (postDate) => {
@@ -72,6 +85,7 @@ const Content = () => {
         />
         <button type="submit">GO</button>
       </form>
+      {(loading) ? <div className="loadingDiv"><img src={loadingGif} className="loadingGif" alt="Loading"/></div> : ""}
 
       <div className="contentSection">
         {data.map((eachNews) => (
@@ -91,7 +105,9 @@ const Content = () => {
                   .replace("pid=News", "")}`,
               }}
             >
+            <div className="myH1">
               <h1>{eachNews?.name}</h1>
+            </div>
               <br />
               <span>{dateFunction(eachNews?.datePublished)}</span>
               <br />
