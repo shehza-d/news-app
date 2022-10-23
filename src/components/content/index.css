@@ -101,8 +101,8 @@ html {
 	margin: 30px;
 	/* width: 2000px; */
 	height: 80vh;
-	padding-left: 10px;
-	padding-right: 10px;
+	/* padding-left: 10px;
+	padding-right: 10px; */
 	width: 80vw;
 	border-radius: 50px;
 	border: 2px solid black;
@@ -119,9 +119,13 @@ html {
 	/* opacity: 0.8; */
 }
 
+.link{
+	text-decoration: none;
+}
 .myH1 {
-	width: 500px;
-	border: 2px solid red;
+	width: 80%;
+	border-radius: 10px 10px 0px 0px;
+	/* border: 2px solid red; */
 	text-decoration: none;
 	/* font-style: none; */
 	backdrop-filter: blur(5px);
@@ -130,20 +134,24 @@ html {
 	/* color: green; */
 }
 
-.post>span {
-	text-decoration: none;
-	background-color: rgba(255, 255, 255, 0.619);
-	color: black;
-	backdrop-filter: blur(5px);
-}
-
 .post>h3 {
 	color: black;
 	background-color: rgba(255, 255, 255, 0.619);
-	border: 2px solid yellow;
+	font-weight: 400;
+
+	padding: 15px;
+	/* border: 2px solid yellow; */
 	text-decoration: none;
 	backdrop-filter: blur(5px);
-	/* border-radius: 50px; */
+	border-radius: 0px 0px 50px 50px;
+}
+.dateSpan {
+	text-decoration: none;
+	font-weight: 200;
+	/* background-color: rgba(255, 255, 255, 0.619); */
+	color: rgba(0, 0, 0, 0.857);
+	/* backdrop-filter: blur(5px); */
+	/* padding: 5px; */
 }
 
 .loadingDiv{
