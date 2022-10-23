@@ -1,13 +1,9 @@
 import "./index.css";
 import moment from "moment";
 import { BsFillMoonFill, BsSun } from "react-icons/bs";
-import { useState } from "react";
-const Header = () => {
-  //useState ka Variable for theme mode dark ya light
-  const [themeMode, setThemeMode] = useState(true);
 
-  //function to enable dark mode
-  const toggleThemeMode = () => setThemeMode(!themeMode);
+
+const Header = (props) => {
 
   return (
     <div className="header">
@@ -23,8 +19,9 @@ const Header = () => {
           <div id="date">{moment().format("D MMM YYYY")}</div>
           <div id="time">{moment().format("h:mm:s a")}</div>
         </div>
-        <button type="button" className="themeBtn" onClick={toggleThemeMode}>
-          {themeMode ? <BsFillMoonFill /> : <BsSun />}
+        {/* //   props.toggleThemeMode se function call ho raha hy jo ↓ function app.js ma bana hy */}
+        <button type="button" className="themeBtn" onClick={props.toggleThemeMode}>
+          {props.mode ? <BsFillMoonFill /> : <BsSun />}
         </button>
       </div>
     </div>

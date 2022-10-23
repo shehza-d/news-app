@@ -1,4 +1,7 @@
-
+.dark {
+  background-color: black;
+  color: white;
+}
 
 .darkMode {
   --bg-color: rgb(21, 32, 43);
@@ -15,6 +18,7 @@
   --lightGray-color: #e7e7e8;
   --trans-clr: rgba(255, 255, 255, 0.5);
 }
+
 /*  */
 /* #root{
   height: 80vh;

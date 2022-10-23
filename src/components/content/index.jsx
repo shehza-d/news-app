@@ -89,9 +89,8 @@ const Content = () => {
         <div className="loadingDiv">
           <img src={loadingGif} className="loadingGif" alt="Loading" />
         </div>
-      ) : (
-        ""
-      )}
+      ) : ("")
+      }
 
       <div className="contentSection">
         {data.map((eachNews) => (
