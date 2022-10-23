@@ -119,9 +119,10 @@ html {
 	/* opacity: 0.8; */
 }
 
-.link{
+.link {
 	text-decoration: none;
 }
+
 .myH1 {
 	width: 80%;
 	border-radius: 10px 10px 0px 0px;
@@ -145,6 +146,7 @@ html {
 	backdrop-filter: blur(5px);
 	border-radius: 0px 0px 50px 50px;
 }
+
 .dateSpan {
 	text-decoration: none;
 	font-weight: 200;
@@ -154,10 +156,11 @@ html {
 	/* padding: 5px; */
 }
 
-.loadingDiv{
+.loadingDiv {
 	width: 80vw;
 	height: 62vh;
 }
+
 .loadingGif {
 	/* border: 3px solid hotpink; */
 	position: absolute;
@@ -165,4 +168,18 @@ html {
 	margin-right: auto;
 	left: 0;
 	right: 0;
+}
+
+@media screen and (max-width: 480px) {
+	.dateDiv {
+		display: none;
+	}
+
+	.myH1>h1 {
+		font-size: 14px;
+	}
+
+	.post>h3 {
+		font-size: 10px;
+	}
 }
