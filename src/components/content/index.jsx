@@ -5,7 +5,9 @@ const Content = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
 
+ 
   useEffect(() => {
     //get news API function
     const getTrendingNews = () => {
@@ -27,10 +29,12 @@ const Content = () => {
           setLoading(false);
           console.log(response);
           setData(response.value);
+          console.log(response.message);
         })
         .catch((err) => {
-          console.error(err);
           setLoading(false);
+          // setErr(err?.response.message);
+          // console.error(err.response.data);
         });
     };
     getTrendingNews();
@@ -62,8 +66,8 @@ const Content = () => {
       })
       .catch((err) => {
         setLoading(false);
-
-        console.error(err);
+        setErr(err?.message);
+        // console.error(err);
       });
   };
 
@@ -74,7 +78,7 @@ const Content = () => {
     // console.log(typeof(d));
     return d;
   };
-
+  // console.log(err)
   return (
     <>
       <form className="inputForm" onSubmit={getNews}>
@@ -89,11 +93,18 @@ const Content = () => {
         <div className="loadingDiv">
           <img src={loadingGif} className="loadingGif" alt="Loading" />
         </div>
-      ) : ("")
-      }
-
+      ) : (
+        ""
+      )}
+      {err ? (
+        <div className="errorr">
+       {err}
+        </div>
+      ) : (
+        ""
+      )}
       <div className="contentSection">
-        {data.map((eachNews) => (
+        {data?.map((eachNews) => (
           <a
             className="link"
             href={eachNews?.url}
