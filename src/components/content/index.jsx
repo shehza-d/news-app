@@ -28,7 +28,7 @@ const Content = () => {
         .then((response) => {
           setLoading(false);
           setData(response.value);
-          // console.log(response);
+          console.log(response);
           setErr(response.message);
         })
         .catch((err) => {
