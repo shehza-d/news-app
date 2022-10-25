@@ -27,14 +27,14 @@ const Content = () => {
         .then((response) => response.json())
         .then((response) => {
           setLoading(false);
-          console.log(response);
           setData(response.value);
-          console.log(response.message);
+          // console.log(response);
+          setErr(response.message);
         })
         .catch((err) => {
           setLoading(false);
           // setErr(err?.response.message);
-          // console.error(err.response.data);
+          console.error(err);
         });
     };
     getTrendingNews();
