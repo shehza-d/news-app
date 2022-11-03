@@ -6,24 +6,28 @@ const Content = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
+  //1
+  const keys = [
+    "773a0cc313msh295d7502f6b02fbp187c0fjsnab04c4750f31",
+    "b5a0240c74msh06cf676249a3419p10cc6ejsn1b0052d9147c",
+    "5733c6d6b4mshbef5b96e75ac139p1d7985jsn3611aef79317",
+  ];
+  const random = Math.floor(Math.random() * 3);
+  // console.log(random)
 
- 
   useEffect(() => {
     //get news API function
     const getTrendingNews = () => {
       setLoading(true);
-      const options = {
+
+      fetch("https://bing-news-search1.p.rapidapi.com/news/", {
         method: "GET",
         headers: {
-          // "X-Search-Location": "ijij",
           "X-BingApis-SDK": "true",
-          "X-RapidAPI-Key":
-            "773a0cc313msh295d7502f6b02fbp187c0fjsnab04c4750f31",
+          "X-RapidAPI-Key": keys[random],
           "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
         },
-      };
-
-      fetch("https://bing-news-search1.p.rapidapi.com/news/", options)
+      })
         .then((response) => response.json())
         .then((response) => {
           setLoading(false);
@@ -45,18 +49,17 @@ const Content = () => {
     //get news API function from search query
     setLoading(true);
     setData([]);
-    const options = {
-      method: "GET",
-      headers: {
-        "X-BingApis-SDK": "true",
-        "X-RapidAPI-Key": "773a0cc313msh295d7502f6b02fbp187c0fjsnab04c4750f31",
-        "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
-      },
-    };
 
     fetch(
       `https://bing-news-search1.p.rapidapi.com/news/search?q=${searchTerm}&freshness=Day&textFormat=Raw&safeSearch=Off`,
-      options
+      {
+        method: "GET",
+        headers: {
+          "X-BingApis-SDK": "true",
+          "X-RapidAPI-Key": keys[random],
+          "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
+        },
+      }
     )
       .then((response) => response.json())
       .then((response) => {
@@ -96,13 +99,7 @@ const Content = () => {
       ) : (
         ""
       )}
-      {err ? (
-        <div className="errorr">
-       {err}
-        </div>
-      ) : (
-        ""
-      )}
+      {err ? <div className="errorr">{err}</div> : ""}
       <div className="contentSection">
         {data?.map((eachNews) => (
           <a
