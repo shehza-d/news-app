@@ -9,7 +9,7 @@ const App = () => {
   const [themeMode, setThemeMode] = useState(false);
 
   //function to enable dark mode
-  const toggleThemeMode = () => setThemeMode(!themeMode);
+  const toggleThemeMode = () => setThemeMode(!themeMode)
 
   return (
     <div className={themeMode ? "dark" : "light"}>
