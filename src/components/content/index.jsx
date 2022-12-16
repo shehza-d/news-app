@@ -109,6 +109,7 @@ const Content = () => {
             rel="noreferrer"
             key={eachNews?.name}
           >
+            ( eachNews?.image ?
             <div
               className="post"
               style={{
@@ -118,10 +119,10 @@ const Content = () => {
                   .replace("pid=News", "")}`,
               }}
             >
+              :null)
               <div className="myH1">
                 <h1>{eachNews?.name}</h1>
               </div>
-
               <h3>
                 {eachNews?.description}
                 {"...  "}
@@ -130,7 +131,6 @@ const Content = () => {
                   ({dateFunction(eachNews?.datePublished)})
                 </span>
               </h3>
-
               {/* <img
             src={eachNews?.image?.thumbnail?.contentUrl
               .replace("&pid=News", "")
