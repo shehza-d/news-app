@@ -1,3 +1,3 @@
 # Dynamic News App in ReactJS
 
-## ReactJS | API Integration | ||
+## ReactJS | API Integration | JavaScript
