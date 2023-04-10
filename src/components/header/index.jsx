@@ -2,10 +2,9 @@ import "./index.css";
 import moment from "moment";
 import { BsFillMoonFill, BsSun } from "react-icons/bs";
 
-const Header = (props) => {
+export default function Header(props) {
   return (
     <div className="header">
-      {/*<nav class="nav-bar">*/}
       <h1>News App</h1>
 
       <div className="flex">
@@ -28,6 +27,4 @@ const Header = (props) => {
       </div>
     </div>
   );
-};
-
-export default Header;
+}

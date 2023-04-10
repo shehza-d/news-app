@@ -1,4 +1,3 @@
-/* {--theme-color: #1a8cd8;} */
 .footer {
   display: flex;
   justify-content: center;
@@ -7,7 +6,6 @@
   height: 65px;
   background-color: #38006b;
   color: white;
-  /* width: 100%; */
 }
 
 .footer > div > a {
@@ -21,9 +19,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 7px;
-  /* width: 100px; */
   padding-left: 10px;
-  /* border: 2px solid red; */
 }
 
 .iconsContainer > li > a {

@@ -9,7 +9,7 @@ import {
 import { HiOutlineMail } from "react-icons/hi";
 import { FaReact } from "react-icons/fa";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <div className="footer">
       <div>
@@ -48,7 +48,7 @@ const Footer = () => {
         </li>
         <li>
           <a
-            href="https://instagram.com/shehza.d?utm_medium=copy_link"
+            href="https://instagram.com/shehza.d"
             target="_blank"
             rel="noreferrer"
           >
@@ -72,6 +72,4 @@ const Footer = () => {
       </ul>
     </div>
   );
-};
-
-export default Footer;
+}
