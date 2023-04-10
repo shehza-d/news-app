@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap");
 
 * {
   margin: 0px;
@@ -7,14 +7,30 @@
 
 body {
   margin: 0;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.darkMode {
+  --bg-color: rgb(21, 32, 43);
+  --main-color: white;
+  --theme-color: #6b26d9;
+  --lightGray-color: #273340;
+  --trans-clr: rgba(0, 0, 0, 0.5);
+}
+
+.lightMode {
+  --bg-color: rgb(214, 207, 207);
+  --main-color: black;
+  --theme-color: #1a8cd8;
+  --lightGray-color: #e7e7e8;
+  --trans-clr: rgba(255, 255, 255, 0.5);
+}

@@ -1,15 +1,13 @@
-import "./App.css";
-import Content from "./components/content";
-import Header from "./components/header";
-import Footer from "./components/footer";
+import "./index.css";
+import { Header, Content, Footer } from "./components";
 import { useState } from "react";
 
-const App = () => {
+export default function App() {
   //useState ka Variable for theme mode dark ya light
   const [themeMode, setThemeMode] = useState(false);
 
   //function to enable dark mode
-  const toggleThemeMode = () => setThemeMode(!themeMode)
+  const toggleThemeMode = () => setThemeMode(!themeMode);
 
   return (
     <div className={themeMode ? "dark" : "light"}>
@@ -19,6 +17,4 @@ const App = () => {
       <Footer />
     </div>
   );
-};
-
-export default App;
+}

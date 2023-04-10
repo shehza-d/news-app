@@ -13,7 +13,8 @@ const Footer = () => {
   return (
     <div className="footer">
       <div>
-        Build by <a href="https://github.com/shehza-d/news">  Shehzad</a>{"  "}
+        Build by <a href="https://github.com/shehza-d/news"> Shehzad</a>
+        {"  "}
         with <FaReact />
         React
       </div>
