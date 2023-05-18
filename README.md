@@ -1,3 +1,10 @@
 # Dynamic News App in ReactJS
 
-## ReactJS | API Integration | JavaScript
+## ReactJS | JavaScript
+
+Dynamic New App built with ReactJS with bings API integration 
+
+- ✅ Dark mode
+- ✅ Responsive 
+- ✅ Search News
+- ✅ API Integration
