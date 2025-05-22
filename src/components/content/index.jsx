@@ -20,11 +20,11 @@ export default function Content() {
     const getTrendingNews = () => {
       setLoading(true);
 
-      fetch("https://bing-news-search1.p.rapidapi.com/news/", {
+      fetch("https://bing-news-search1.p.rapidapi.com/news?safeSearch=Off&textFormat=Raw", {
         method: "GET",
         headers: {
           "X-BingApis-SDK": "true",
-          "X-RapidAPI-Key": keys[random],
+          "X-RapidAPI-Key": "38810d57c8msh266288b78e7b9aep165162jsn37ce8c49208b",
           "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
         },
       })
@@ -58,7 +58,7 @@ export default function Content() {
           "X-RapidAPI-Key": keys[random],
           "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
         },
-      }
+      },
     )
       .then((response) => response.json())
       .then((response) => {

@@ -3,7 +3,7 @@
 const CACHE = "pwabuilder-offline-page";
 
 importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
+  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js",
 );
 
 // TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
@@ -17,7 +17,7 @@ self.addEventListener("message", (event) => {
 
 self.addEventListener("install", async (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.add(offlineFallbackPage))
+    caches.open(CACHE).then((cache) => cache.add(offlineFallbackPage)),
   );
 });
 
@@ -29,7 +29,7 @@ workbox.routing.registerRoute(
   new RegExp("/*"),
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: CACHE,
-  })
+  }),
 );
 
 self.addEventListener("fetch", (event) => {
@@ -50,7 +50,7 @@ self.addEventListener("fetch", (event) => {
           const cachedResp = await cache.match(offlineFallbackPage);
           return cachedResp;
         }
-      })()
+      })(),
     );
   }
 });
